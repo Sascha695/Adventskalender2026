@@ -1,1 +1,56 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR-Codes</title><link rel="stylesheet" href="style.css"><style>@media print{header,footer,.no-print{display:none}.qr-grid{grid-template-columns:repeat(4,1fr)}.qr-card{break-inside:avoid}}.qr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.qr-card{background:white;border:1px solid #ddd;border-radius:12px;text-align:center;padding:10px}.qr-card img{width:150px;height:150px}@media(max-width:700px){.qr-grid{grid-template-columns:repeat(2,1fr)}}@media print{.qr-card img{width:38mm;height:38mm}}</style></head><body><main class="puzzle-shell"><article class="puzzle-card"><div class="no-print"><a class="back" href="index.html">← Zum Kalender</a><h1>QR-Codes zum Ausdrucken</h1><button class="btn" onclick="window.print()">Drucken</button></div><div id="qrGrid" class="qr-grid"></div></article></main><script>const base=location.href.replace(/qr-codes\.html.*$/,'');for(let d=1;d<=24;d++){const url=base+'day'+d+'.html',encoded=encodeURIComponent(url),card=document.createElement('div');card.className='qr-card';card.innerHTML=`<strong>Tag ${d}</strong><br><img src="https://api.qrserver.com/v1/create-qr-code/?data=${encoded}&size=300x300" alt="QR-Code für Tag ${d}">`;document.getElementById('qrGrid').appendChild(card)}</script></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QR-Codes – Adventskalender 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .qr-page{max-width:1000px;margin:2rem auto;padding:1rem}
+    .qr-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+    .qr-card{background:#fff;border:1px solid #d8d5ca;border-radius:12px;padding:1rem;text-align:center;break-inside:avoid}
+    .qr-card img{display:block;width:100%;max-width:180px;height:auto;margin:.5rem auto}
+    .qr-card p{font-size:.75rem;overflow-wrap:anywhere;margin:.35rem 0}
+    @media(max-width:700px){.qr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media print{
+      body{background:#fff}
+      .snow,.no-print{display:none!important}
+      .qr-page{width:100%;max-width:none;margin:0;padding:0}
+      .qr-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6mm}
+      .qr-card{border:1px solid #999;border-radius:0;padding:3mm}
+      .qr-card img{width:35mm;height:35mm}
+      .qr-card p{font-size:7pt}
+    }
+  </style>
+</head>
+<body>
+  <main class="qr-page">
+    <section class="puzzle-card no-print">
+      <a class="back" href="index.html">← Zum Kalender</a>
+      <h1>Neue QR-Codes für 2026</h1>
+      <p>Diese Codes führen zum neuen Kalender im Repository <strong>Adventskalender2026</strong>. Die QR-Codes vom alten Kalender bleiben davon unberührt und führen weiterhin zu den Seiten von 2025.</p>
+      <p>Vor dem Drucken muss GitHub Pages aktiviert sein. Öffne diese Seite anschließend über die veröffentlichte GitHub-Pages-Adresse, damit die QR-Codes auf die richtigen Web-URLs zeigen.</p>
+      <button class="btn" type="button" onclick="window.print()">QR-Codes drucken</button>
+    </section>
+    <section id="qrGrid" class="qr-grid" aria-label="QR-Codes für die 24 Tage"></section>
+  </main>
+  <script>
+    const grid = document.getElementById('qrGrid');
+    for (let day = 1; day <= 24; day++) {
+      const folder = String(day).padStart(2, '0');
+      const destination = new URL(`days/${folder}/`, window.location.href).href;
+      const card = document.createElement('article');
+      card.className = 'qr-card';
+      const heading = document.createElement('h2');
+      heading.textContent = `Tag ${day}`;
+      const image = document.createElement('img');
+      image.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(destination)}`;
+      image.alt = `QR-Code für Tag ${day}`;
+      const address = document.createElement('p');
+      address.textContent = destination;
+      card.append(heading, image, address);
+      grid.appendChild(card);
+    }
+  </script>
+</body>
+</html>
