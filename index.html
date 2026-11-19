@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Adventskalender 2026 – Wichtelschule</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+  <header class="hero">
+    <p class="eyebrow">Wichtelschule 2026</p>
+    <h1>24 Prüfungen bis Weihnachten</h1>
+    <p>Begleite unseren Wichtel-Azubi auf dem Weg zu seiner ersten Geschenketour.</p>
+  </header>
+  <main class="calendar-shell">
+    <section class="progress-card">
+      <div><strong id="completedCount">0</strong> von 24 Prüfungen geschafft</div>
+      <div class="progress"><span id="progressBar"></span></div>
+    </section>
+    <section class="elf-preview" id="elfPreview" aria-label="Dein Wichtel"></section>
+    <section class="calendar-grid" id="calendarGrid" aria-label="Kalenderübersicht"></section>
+  </main>
+  <footer><a href="qr-codes.html">QR-Codes für den Ausdruck</a></footer>
+  <script src="app.js"></script>
+  <script>
+    renderOverview();
+  </script>
+</body>
+</html>
