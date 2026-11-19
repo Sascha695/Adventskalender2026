@@ -1,0 +1,2 @@
+// Sprachprüfung Französisch am Dienstag, 8. Dezember 2026 – inspiriert von der Fête des Lumières in Lyon.
+initDay(8, `<span class="language-tag">Français · Fête des Lumières</span><h2>Die Lichterprüfung in Lyon</h2><p>Rätselentwurf: eine kurze französische Nachricht und eine Lichterfolge helfen, die richtige Laterne zu finden.</p><button class="btn" onclick="finishDay(8, 'L')">Testweise Prüfung bestehen</button>`);

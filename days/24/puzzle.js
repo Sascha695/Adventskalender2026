@@ -1,0 +1,2 @@
+// Sprachprüfung Spanisch am Heiligabend: Nochebuena.
+initDay(24, `<span class="language-tag">Español · Nochebuena</span><h2>Die Abschlussprüfung</h2><p>Rätselentwurf: eine kurze spanische Weihnachtsbotschaft vervollständigen. Danach ist der Wichtel bereit für seine erste Geschenketour.</p><button class="btn" onclick="finishDay(24, 'E', '¡Feliz Navidad! Prüfung bestanden – dein Wichtel darf auf Tour gehen.')">Testweise Prüfung bestehen</button>`);
